@@ -1,0 +1,8 @@
+# IDE and editor specific files
+.vscode/
+.idea/
+*.sublime-*
+*.swp
+*~
+.project
+*.iml
