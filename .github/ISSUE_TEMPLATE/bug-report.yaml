@@ -1,15 +1,14 @@
-name: Bug Report
+---
+name: 🐛Bug Report
 description: Report a bug encountered while using StatusZ
 labels: kind/bug
+title: "[Bug]: "
+
 body:
   - type: textarea
     id: version
     attributes:
       label: StatusZ version
-      value: |
-        <details>
-
-        </details>
 
   - type: textarea
     id: kubeVersion
