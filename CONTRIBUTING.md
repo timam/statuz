@@ -1,18 +1,18 @@
-# Contributing to StatusZ
+# Contributing to statuz
 
-Thank you for your interest in contributing to StatusZ! We welcome contributions from the community to make this project even better.
+Thank you for your interest in contributing to statuz! We welcome contributions from the community to make this project even better.
 
 ## Reporting Issues
 
-If you encounter any issues or bugs with StatusZ, please [create a new issue](https://github.com/timam/statusz/issues/new) on our GitHub repository. Please provide detailed information about the issue you're facing, including steps to reproduce it and any relevant error messages.
+If you encounter any issues or bugs with statuz, please [create a new issue](https://github.com/timam/statuz/issues/new) on our GitHub repository. Please provide detailed information about the issue you're facing, including steps to reproduce it and any relevant error messages.
 
 ## Feature Requests
 
-If you have ideas for new features or improvements to existing ones, we'd love to hear them! You can [submit a feature request](https://github.com/timam/statusz/issues/new) on our GitHub repository. Describe the feature you'd like to see and how it could benefit the project.
+If you have ideas for new features or improvements to existing ones, we'd love to hear them! You can [submit a feature request](https://github.com/timam/statuz/issues/new) on our GitHub repository. Describe the feature you'd like to see and how it could benefit the project.
 
 ## Making Contributions
 
-We encourage contributions from the community to help improve StatusZ. Here's how you can get involved:
+We encourage contributions from the community to help improve statuz. Here's how you can get involved:
 
 1. Fork the repository to your own GitHub account.
 2. Create a new branch for your contribution: `git checkout -b my-contribution`.
@@ -29,6 +29,6 @@ We expect all contributors to follow our [Code of Conduct](CODE_OF_CONDUCT.md). 
 
 ## License
 
-By contributing to StatusZ, you agree that your contributions will be licensed under the [LICENSE](LICENSE) of the project.
+By contributing to statuz, you agree that your contributions will be licensed under the [LICENSE](LICENSE) of the project.
 
-Thank you for your contributions and support in making StatusZ a great monitoring tool!
+Thank you for your contributions and support in making statuz a great monitoring tool!

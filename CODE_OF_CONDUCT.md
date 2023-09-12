@@ -1,8 +1,8 @@
 # Code of Conduct
 
-As contributors and maintainers of the StatusZ project, we pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+As contributors and maintainers of the statuz project, we pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
-We expect everyone participating in the StatusZ community to abide by this code of conduct in all interactions and communications both within the project and in public spaces when representing the project. Examples of behavior that contributes to creating a positive environment include:
+We expect everyone participating in the statuz community to abide by this code of conduct in all interactions and communications both within the project and in public spaces when representing the project. Examples of behavior that contributes to creating a positive environment include:
 
 - Using welcoming and inclusive language
 - Being respectful of differing viewpoints and experiences
