@@ -12,7 +12,7 @@ func Start() {
 	}
 
 	if env.Type == "website" {
-		checkUrl(env.Endpoint)
+		watchWebsite(env.Endpoint, env.Interval)
 	}
 
 }
