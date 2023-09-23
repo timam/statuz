@@ -31,11 +31,11 @@ func GetEnvVars() (*EnvVars, error) {
 		return nil, errors.New("ENDPOINT environment variable is not set")
 	}
 
-	if envVars.Type != "website" && envVars.Type != "ip" {
-		return nil, errors.New("TYPE must be 'website' or 'ip'")
+	if envVars.Type != "webpage" && envVars.Type != "ip" {
+		return nil, errors.New("TYPE must be 'webpage' or 'ip'")
 	}
 
-	if envVars.Type == "website" {
+	if envVars.Type == "webpage" {
 		if !isValidURL(envVars.Endpoint) {
 			return nil, errors.New("ENDPOINT must be a valid URL")
 		}

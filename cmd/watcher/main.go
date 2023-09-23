@@ -11,8 +11,8 @@ func Start() {
 		log.Fatalln(err)
 	}
 
-	if env.Type == "website" {
-		watchWebsite(env.Endpoint, env.Interval)
+	if env.Type == "webpage" {
+		watchPage(env.Endpoint, env.Interval)
 	}
 
 }

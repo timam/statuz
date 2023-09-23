@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func watchWebsite(url string, intervalInSeconds string) {
+func watchPage(url string, intervalInSeconds string) {
 	log.Printf("starting watcher for %s\n", url)
 
 	interval, _ := strconv.ParseInt(intervalInSeconds, 10, 64)
@@ -19,7 +19,7 @@ func watchWebsite(url string, intervalInSeconds string) {
 		for {
 			select {
 			case <-ticker.C:
-				websiteStatusChecker(url)
+				pageChecker(url)
 			}
 		}
 	}()
@@ -28,7 +28,7 @@ func watchWebsite(url string, intervalInSeconds string) {
 	select {}
 }
 
-func websiteStatusChecker(url string) {
+func pageChecker(url string) {
 	resp, err := http.Get(url)
 	if err != nil {
 		log.Printf("Error checking URL %s: %v\n", url, err)
