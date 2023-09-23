@@ -11,7 +11,7 @@ func Start() {
 		log.Fatalln(err)
 	}
 
-	if env.Type == "url" {
+	if env.Type == "website" {
 		checkUrl(env.Endpoint)
 	}
 
