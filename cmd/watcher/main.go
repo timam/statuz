@@ -14,5 +14,8 @@ func Start() {
 	if env.Type == "webpage" {
 		watchPage(env.Endpoint, env.Interval)
 	}
+	if env.Type == "ip" {
+		watchIp(env.Endpoint, env.Port, env.Interval)
+	}
 
 }

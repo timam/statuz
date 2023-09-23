@@ -24,8 +24,6 @@ func watchPage(url string, intervalInSeconds string) {
 		}
 	}()
 
-	// Block here to keep the watcher running
-	select {}
 }
 
 func pageChecker(url string) {
