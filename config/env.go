@@ -16,6 +16,7 @@ type EnvVars struct {
 }
 
 func GetEnvVars() (*EnvVars, error) {
+
 	envVars := &EnvVars{
 		Type:     os.Getenv("TYPE"),
 		Endpoint: os.Getenv("ENDPOINT"),
@@ -30,12 +31,20 @@ func GetEnvVars() (*EnvVars, error) {
 		return nil, errors.New("ENDPOINT environment variable is not set")
 	}
 
-	if envVars.Type != "url" && envVars.Type != "ip" {
-		return nil, errors.New("TYPE must be 'url' or 'ip'")
+	if envVars.Type != "website" && envVars.Type != "ip" {
+		return nil, errors.New("TYPE must be 'website' or 'ip'")
 	}
 
-	if !isValidURL(envVars.Endpoint) && !isValidIP(envVars.Endpoint) {
-		return nil, errors.New("ENDPOINT must be a valid URL or IP address")
+	if envVars.Type == "website" {
+		if !isValidURL(envVars.Endpoint) {
+			return nil, errors.New("ENDPOINT must be a valid URL")
+		}
+	}
+
+	if envVars.Type == "ip" {
+		if !isValidIP(envVars.Endpoint) {
+			return nil, errors.New("ENDPOINT must be a valid IP address")
+		}
 	}
 
 	if strings.HasSuffix(envVars.Interval, "s") {

@@ -6,8 +6,13 @@ import (
 )
 
 func Start() {
-	_, err := config.GetEnvVars()
+	env, err := config.GetEnvVars()
 	if err != nil {
 		log.Fatalln(err)
 	}
+
+	if env.Type == "url" {
+		checkUrl(env.Endpoint)
+	}
+
 }
