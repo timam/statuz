@@ -7,24 +7,24 @@ import (
 	"time"
 )
 
-func watchPage(url string, intervalInSeconds string) {
+func watchPage(url string, intervalInSeconds string) error {
 	log.Printf("starting watcher for %s\n", url)
 
-	interval, _ := strconv.ParseInt(intervalInSeconds, 10, 64)
+	interval, err := strconv.ParseInt(intervalInSeconds, 10, 64)
+	if err != nil {
+		return err
+	}
 
 	ticker := time.NewTicker(time.Duration(interval) * time.Second)
+	defer ticker.Stop()
 
-	// Start a goroutine to check the URL status periodically
-	go func() {
-		for {
-			select {
-			case <-ticker.C:
-				pageChecker(url)
-			}
-		}
-	}()
+	for range ticker.C {
+		pageChecker(url)
+	}
 
+	return nil
 }
+
 
 func pageChecker(url string) {
 	resp, err := http.Get(url)
@@ -34,9 +34,7 @@ func pageChecker(url string) {
 	}
 	defer resp.Body.Close()
 
-	if resp.StatusCode == http.StatusOK {
-		log.Printf("URL %s is returning 200 OK\n", url)
-	} else {
-		log.Printf("URL %s is returning status code %d\n", url, resp.StatusCode)
-	}
+	statusText := http.StatusText(resp.StatusCode)
+	log.Printf("URL %s is returning %s\n", url, statusText)
 }
+

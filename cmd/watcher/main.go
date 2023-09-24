@@ -1,21 +1,21 @@
 package watcher
 
 import (
+	"errors"
 	"github.com/timam/statuz/config"
-	"log"
 )
 
-func Start() {
+func Start() error {
 	env, err := config.GetEnvVars()
 	if err != nil {
-		log.Fatalln(err)
+		return err
 	}
 
 	if env.Type == "webpage" {
-		watchPage(env.Endpoint, env.Interval)
+		return watchPage(env.Endpoint, env.Interval)
+	} else if env.Type == "ip" {
+		return watchIp(env.Endpoint, env.Port, env.Interval)
+	} else {
+		return errors.New("Unsupported watch type: " + env.Type)
 	}
-	if env.Type == "ip" {
-		watchIp(env.Endpoint, env.Port, env.Interval)
-	}
-
 }
