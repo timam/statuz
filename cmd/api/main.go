@@ -1,11 +1,11 @@
 package main
 
 import (
-	"log"
-	"net/http"
-
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/timam/statuz/cmd/watcher"
 	"github.com/timam/statuz/internal/healthz"
+	"log"
+	"net/http"
 )
 
 func main() {
@@ -15,5 +15,6 @@ func main() {
 	}
 
 	http.HandleFunc("/healthz", healthz.HealthCheck)
+	http.Handle("/metrics", promhttp.Handler())
 	http.ListenAndServe(":8080", nil)
 }

@@ -1,6 +1,7 @@
 package watcher
 
 import (
+	"github.com/timam/statuz/internal/prometheus"
 	"log"
 	"net/http"
 	"strconv"
@@ -25,7 +26,6 @@ func watchPage(url string, intervalInSeconds string) error {
 	return nil
 }
 
-
 func pageChecker(url string) {
 	resp, err := http.Get(url)
 	if err != nil {
@@ -35,6 +35,13 @@ func pageChecker(url string) {
 	defer resp.Body.Close()
 
 	statusText := http.StatusText(resp.StatusCode)
-	log.Printf("URL %s is returning %s\n", url, statusText)
+
+	if resp.StatusCode == http.StatusOK {
+		prometheus.SetWebpagePrometheusMetric(url, http.StatusOK)
+		log.Printf("URL %s is returning %s\n", url, statusText)
+	} else {
+		prometheus.SetWebpagePrometheusMetric(url, int64(resp.StatusCode))
+		log.Printf("URL %s is returning %s\n", url, statusText)
+	}
 }
 

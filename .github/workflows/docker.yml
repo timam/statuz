@@ -2,7 +2,7 @@ name: Multi-Platform Docker CI
 on:
   push:
     branches:
-      - "mvp"
+      - "main"
 
 env:
   REGISTRY_IMAGE: timam/statuz

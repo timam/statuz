@@ -2,8 +2,6 @@ package config
 
 import (
 	"errors"
-	"fmt"
-	"log"
 	"os"
 	"regexp"
 	"strings"
@@ -60,8 +58,6 @@ func GetEnvVars() (*EnvVars, error) {
 		envVars.Interval = "60"
 	}
 
-	printEnvs(envVars)
-
 	return envVars, nil
 }
 
@@ -73,9 +69,4 @@ func isValidURL(s string) bool {
 func isValidIP(s string) bool {
 	regex := `^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$`
 	return regexp.MustCompile(regex).MatchString(s)
-}
-
-func printEnvs(env *EnvVars) {
-	message := fmt.Sprintf("Type: %s, Endpoint: %s, Interval: %s", env.Type, env.Endpoint, env.Interval)
-	log.Println(message)
 }
