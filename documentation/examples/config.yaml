@@ -1,0 +1,53 @@
+global:
+  interval: 15s
+  logging:
+    format: text # -- Set the global logging format. Either: `text` or `json`
+    level: info  # -- Set the global logging level. One of: `debug`, `info`, `warn` or `error`
+endpoints:
+  - name: google
+    configs:
+      - target: https://google.com
+      - type: website
+      - interval: 60s
+  - name: 1111
+    configs:
+      - target: 1.1.1.1
+      - type: ping
+      - interval: 1s
+  - name: 8888
+    configs:
+      - target: 8.8.8.8:53
+      - type: port
+      - interval: 5m
+  - name: prothomalo
+    configs:
+      - target: https://prothomalo.com
+      - type: ssl
+      - interval: 1d
+  - name: grafana
+    configs:
+      - target: https://grafana.com/healthz
+      - type: api
+      - method: GET
+  - name: production_user_create
+    configs:
+      - target: http://users.production.cluster.svc.local/create
+      - type: api
+      - method: POST
+      - body: |
+          {
+            "user_id": "user123",
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john.doe@example.com"
+          }
+        conditions:
+          - "[STATUS] == 201"
+          - "[BODY].user_id == 'user123'"
+          - "[BODY].message == 'User created successfully'"
+
+
+
+
+
+
