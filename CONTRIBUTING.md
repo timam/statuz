@@ -4,11 +4,11 @@ Thank you for your interest in contributing to statuz! We welcome contributions 
 
 ## Reporting Issues
 
-If you encounter any issues or bugs with statuz, please [create a new issue](https://github.com/timam/statuz/issues/new) on our GitHub repository. Please provide detailed information about the issue you're facing, including steps to reproduce it and any relevant error messages.
+If you encounter any issues or bugs with statuz, please [create a new issue](https://github.com/statuzproj/statuz/issues/new) on our GitHub repository. Please provide detailed information about the issue you're facing, including steps to reproduce it and any relevant error messages.
 
 ## Feature Requests
 
-If you have ideas for new features or improvements to existing ones, we'd love to hear them! You can [submit a feature request](https://github.com/timam/statuz/issues/new) on our GitHub repository. Describe the feature you'd like to see and how it could benefit the project.
+If you have ideas for new features or improvements to existing ones, we'd love to hear them! You can [submit a feature request](https://github.com/statuzproj/statuz/issues/new) on our GitHub repository. Describe the feature you'd like to see and how it could benefit the project.
 
 ## Making Contributions
 

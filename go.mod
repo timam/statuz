@@ -1,4 +1,4 @@
-module github.com/timam/statuz
+module github.com/statuzproj/statuz
 
 go 1.21
 

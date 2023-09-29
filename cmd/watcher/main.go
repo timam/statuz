@@ -2,7 +2,7 @@ package watcher
 
 import (
 	"errors"
-	"github.com/timam/statuz/config"
+	"github.com/statuzproj/statuz/config"
 )
 
 func Start() error {

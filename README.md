@@ -27,7 +27,7 @@ statuz is open-source software licensed under the [Apache License 2.0](LICENSE).
 
 For questions, suggestions, or discussions, feel free to reach out on our community channels:
 
-- GitHub Issues: [Link to Issues](https://github.com/timam/statuz/issues)
+- GitHub Issues: [Link to Issues](https://github.com/statuzproj/statuz/issues)
 
 We look forward to collaborating with you!
 

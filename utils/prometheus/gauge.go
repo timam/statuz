@@ -2,7 +2,7 @@ package prometheus
 
 import (
 	"github.com/prometheus/client_golang/prometheus"
-	"github.com/timam/statuz/config"
+	"github.com/statuzproj/statuz/config"
 	"net/http"
 )
 

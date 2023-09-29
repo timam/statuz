@@ -1,7 +1,7 @@
 package watcher
 
 import (
-	"github.com/timam/statuz/utils/prometheus"
+	"github.com/statuzproj/statuz/utils/prometheus"
 	"log"
 	"net/http"
 	"strconv"
