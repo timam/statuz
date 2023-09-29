@@ -1,7 +1,7 @@
 package watcher
 
 import (
-	"github.com/timam/statuz/internal/prometheus"
+	"github.com/timam/statuz/utils/prometheus"
 	"log"
 	"net/http"
 	"strconv"
@@ -44,4 +44,3 @@ func pageChecker(url string) {
 		log.Printf("URL %s is returning %s\n", url, statusText)
 	}
 }
-

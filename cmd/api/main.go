@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/timam/statuz/cmd/watcher"
-	"github.com/timam/statuz/internal/healthz"
+	"github.com/timam/statuz/utils/healthz"
 	"log"
 	"net/http"
 )
