@@ -1,4 +1,4 @@
-package config
+package evictedconf
 
 func MetricName() string {
 
