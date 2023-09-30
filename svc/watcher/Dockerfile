@@ -9,10 +9,10 @@ COPY ../../utils /statuz/utils/
 RUN mkdir /statuz/config/
 COPY ../../config /statuz/config/
 
-RUN mkdir -p /statuz/cmd/watcher
+RUN mkdir -p /statuz/svc/watcher
 COPY ./cmd/watcher /statuz/cmd/watcher
 
-RUN go build -o /statuz/bin/watcher -ldflags '-w -s' -tags netgo -a -installsuffix cgo -v ./cmd/watcher
+RUN go build -o /statuz/bin/watcher -ldflags '-w -s' -tags netgo -a -installsuffix cgo -v ./svc/watcher
 
 FROM alpine:edge
 COPY --from=build /statuz/bin/watcher /statuz/bin/watcher
