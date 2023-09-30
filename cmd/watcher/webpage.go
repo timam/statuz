@@ -1,4 +1,4 @@
-package watcher
+package main
 
 import (
 	"github.com/statuzproj/statuz/utils/prometheus"

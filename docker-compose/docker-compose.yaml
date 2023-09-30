@@ -3,7 +3,7 @@ services:
     container_name: statuz
     build:
       context: ../
-      dockerfile: Dockerfile
+      dockerfile: ../cmd/watcher/Dockerfile
     ports:
       - 18080:8080
     ## SET YOUR ENV ACCORDINGLY. SEE README FOR DETAILS

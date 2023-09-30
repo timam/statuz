@@ -1,4 +1,4 @@
-package watcher
+package main
 
 import (
 	"fmt"
@@ -25,7 +25,6 @@ func watchIp(ip string, port string, intervalInSeconds string) error {
 
 	return nil
 }
-
 
 func pinger(ip string, port string) {
 	address := fmt.Sprintf("%s:%s", ip, port)
