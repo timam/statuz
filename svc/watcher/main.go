@@ -3,7 +3,7 @@ package main
 import (
 	"errors"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"github.com/statuzproj/statuz/config"
+	"github.com/statuzproj/statuz/utils/evictedconf"
 	"github.com/statuzproj/statuz/utils/healthz"
 	"log"
 	"net/http"
@@ -21,7 +21,7 @@ func main() {
 }
 
 func start() error {
-	env, err := config.GetEnvVars()
+	env, err := evictedconf.GetEnvVars()
 	if err != nil {
 		return err
 	}

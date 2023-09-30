@@ -6,11 +6,8 @@ COPY ../../go.mod ../../go.sum ./
 RUN mkdir /statuz/utils/
 COPY ../../utils /statuz/utils/
 
-RUN mkdir /statuz/config/
-COPY ../../config /statuz/config/
-
 RUN mkdir -p /statuz/svc/watcher
-COPY ./cmd/watcher /statuz/cmd/watcher
+COPY ./svc/watcher /statuz/svc/watcher
 
 RUN go build -o /statuz/bin/watcher -ldflags '-w -s' -tags netgo -a -installsuffix cgo -v ./svc/watcher
 
