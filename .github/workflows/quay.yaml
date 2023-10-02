@@ -1,0 +1,60 @@
+name: Build and Push Image to quay.io
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Build and push image
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - linux/386
+          - linux/amd64
+          - linux/arm/v6
+          - linux/arm/v7
+          - linux/arm64/v8
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build watcher image
+        id: build-watcher-image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: watcher
+          tags: latest ${{ github.ref_name }}
+          containerfiles: svc/watcher/Dockerfile
+
+      - name: Build genie image
+        id: build-genie-image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: genie
+          tags: latest ${{ github.ref_name }}
+          containerfiles: svc/genie/Dockerfile
+
+      - name: Push watcher image to quay.io
+        id: push-watcher-image
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ${{ steps.build-watcher-image.outputs.image }}
+          tags: ${{ steps.build-watcher-image.outputs.tags }}
+          registry: ${{ vars.QUAY_REGISTRY }}
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_PASSWORD }}
+
+      - name: Push genie image to quay.io
+        id: push-genie-image
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ${{ steps.build-genie-image.outputs.image }}
+          tags: ${{ steps.build-genie-image.outputs.tags }}
+          registry: ${{ vars.QUAY_REGISTRY }}
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_PASSWORD }}
