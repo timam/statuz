@@ -20,7 +20,7 @@ jobs:
           service_name: watcher
           dockerfile_path: svc/watcher/Dockerfile
           tag: ${{ github.ref_name }}
-          quay_registry: quay.io/timam/statuz-watcher
+          quay_registry: ${{ env.QUAY_REGISTRY }}
           quay_username: ${{ secrets.QUAY_USERNAME }}
           quay_password: ${{ secrets.QUAY_PASSWORD }}
 
@@ -30,6 +30,6 @@ jobs:
           service_name: genie
           dockerfile_path: svc/genie/Dockerfile
           tag: ${{ github.ref_name }}
-          quay_registry: quay.io/timam/statuz-watcher
+          quay_registry: ${{ env.QUAY_REGISTRY }}
           quay_username: ${{ secrets.QUAY_USERNAME }}
           quay_password: ${{ secrets.QUAY_PASSWORD }}
