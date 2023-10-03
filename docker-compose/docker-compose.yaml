@@ -11,6 +11,19 @@ services:
       ENDPOINT: https://www.google.com
       INTERVAL: 15s
 
+  genie:
+    container_name: genie
+    network_mode: host
+    build:
+      context: ../
+      dockerfile: ./svc/genie/Dockerfile
+    ports:
+      - 18081:8081
+    volumes:
+      - ./minikube/client.crt:/root/.kube/client.crt
+      - ./minikube/client.key:/root/.kube/client.key
+      - ./minikube/config:/root/.kube/config
+
   prometheus:
     image: prom/prometheus
     container_name: prometheus
@@ -35,5 +48,6 @@ services:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
       - GF_AUTH_DISABLE_LOGIN_FORM=true
+
 volumes:
   prom_data:

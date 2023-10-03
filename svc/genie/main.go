@@ -14,7 +14,6 @@ import (
 )
 
 func main() {
-
 	usr, err := user.Current()
 	if err != nil {
 		log.Printf("Error getting user's home directory: %v\n", err)
@@ -23,11 +22,16 @@ func main() {
 
 	kubeconfigPath := usr.HomeDir + "/.kube/config"
 
+	log.Printf("user : %s", usr)
+	log.Printf("path : %s", kubeconfigPath)
+
 	config, err := clientcmd.BuildConfigFromFlags("", kubeconfigPath)
 	if err != nil {
 		log.Printf("Error loading kubeconfig: %v\n", err)
-		os.Exit(1)
 	}
+
+	// Set Insecure to true to skip TLS verification
+	config.Insecure = true
 
 	clientset, err := kubernetes.NewForConfig(config)
 	if err != nil {

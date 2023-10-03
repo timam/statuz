@@ -1,0 +1,25 @@
+# ClusterRole that allows read access to ConfigMaps in all namespaces
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: read-configmaps-all-namespaces
+rules:
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    resourceNames: [""] # Replace with specific ConfigMap names if needed
+    verbs: ["get", "list"]
+---
+
+# ClusterRoleBinding to bind 'system:anonymous' to the 'read-configmaps-all-namespaces' ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: read-configmaps-all-namespaces-binding
+subjects:
+  - kind: User
+    name: system:anonymous
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: read-configmaps-all-namespaces
+  apiGroup: rbac.authorization.k8s.io
