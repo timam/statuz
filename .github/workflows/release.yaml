@@ -18,6 +18,7 @@ jobs:
         uses: statuzproj/actions/quay-multi-arch@main
         with:
           service_name: watcher
+          dockerfile_path: svc/watcher/Dockerfile
           tag: ${{ github.ref_name }}
           quay_registry: quay.io/timam/statuz-watcher
           quay_username: ${{ secrets.QUAY_USERNAME }}
@@ -27,6 +28,7 @@ jobs:
         uses: statuzproj/actions/quay-multi-arch@main
         with:
           service_name: genie
+          dockerfile_path: svc/genie/Dockerfile
           tag: ${{ github.ref_name }}
           quay_registry: quay.io/timam/statuz-watcher
           quay_username: ${{ secrets.QUAY_USERNAME }}
