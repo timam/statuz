@@ -1,4 +1,4 @@
-FROM golang:1.21 AS build
+FROM golang:1.20 AS build
 
 WORKDIR /statuz/
 COPY ../../go.mod ../../go.sum ./
