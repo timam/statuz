@@ -7,14 +7,23 @@ on:
 
 jobs:
   build:
-    name: Build and push image
+    name: release docker images
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - linux/386
+          - linux/amd64
+          - linux/arm/v6
+          - linux/arm/v7
+          - linux/arm64/v8
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: build and push watcher docker image to quay.io
+      - name: release watcher image to quay.io
         uses: statuzproj/actions/quay-multi-arch@main
         with:
           service_name: watcher
@@ -24,7 +33,7 @@ jobs:
           quay_username: ${{ secrets.QUAY_USERNAME }}
           quay_password: ${{ secrets.QUAY_PASSWORD }}
 
-      - name: build and push genie docker image to quay.io
+      - name: release genie image to quay.io
         uses: statuzproj/actions/quay-multi-arch@main
         with:
           service_name: genie
