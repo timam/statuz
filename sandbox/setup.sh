@@ -1,20 +1,25 @@
+#!/bin/bash
+
+#Disable TLS certificate verification
+kubectl config set-cluster minikube --insecure-skip-tls-verify=true
+
+#Update minikube ip in config file
+cat <<EOF > minikube/config
 apiVersion: v1
 clusters:
 - cluster:
     extensions:
     - extension:
-        last-update: Tue, 03 Oct 2023 13:52:45 +06
         provider: minikube.sigs.k8s.io
         version: v1.31.2
       name: cluster_info
-    server: https://192.168.49.2:8443
+    server: https://$(minikube ip):8443
   name: minikube
 contexts:
 - context:
     cluster: minikube
     extensions:
     - extension:
-        last-update: Tue, 03 Oct 2023 13:52:45 +06
         provider: minikube.sigs.k8s.io
         version: v1.31.2
       name: context_info
@@ -26,4 +31,7 @@ kind: Config
 preferences: {}
 users:
 - name: minikube
+EOF
 
+#RBAC for anonymous user
+kubectl apply -f minikube/rbac.yaml

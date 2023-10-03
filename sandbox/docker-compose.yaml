@@ -20,8 +20,6 @@ services:
     ports:
       - 18081:8081
     volumes:
-      - ./minikube/client.crt:/root/.kube/client.crt
-      - ./minikube/client.key:/root/.kube/client.key
       - ./minikube/config:/root/.kube/config
 
   prometheus:

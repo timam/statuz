@@ -30,7 +30,7 @@ environment:
 2. Customize the `docker-compose.yml` file with your desired Statuz configuration (as described above) and adjust Prometheus and Grafana configurations if necessary.
 3. Start the services in detached mode (background) using the following command:
    ```bash 
-    docker-compose up -d
+    sandbox up -d
    ```
 4. Access statuz, Prometheus, and Grafana in your web browser:
    - statuz: http://localhost:18080 (or the configured port)
@@ -41,6 +41,6 @@ When you're finished using the services or need to stop them, follow these steps
 1. Open a terminal and navigate to the directory containing the `docker-compose.yml` file.
 2. To stop and remove the running containers, use the following command:
    ```bash
-   docker-compose down
+   sandbox down
    ```
 
