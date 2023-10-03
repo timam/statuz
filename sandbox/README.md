@@ -20,6 +20,7 @@ We have tested this sandbox with following tools and version, if you face any is
 | docker         | `24.0.2`   |
 | docker-compose | `v2.18.1`  |
 | minikube       | `v1.31.2`  |
+| kubernetes     | `v1.27.4`  |
 
 
 ## How to start sandbox environment?
