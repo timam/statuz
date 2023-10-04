@@ -1,3 +1,4 @@
+version: '3.8'
 services:
   watcher:
     container_name: watcher
@@ -5,7 +6,7 @@ services:
       context: ../
       dockerfile: ./svc/watcher/Dockerfile
     ports:
-      - 18080:8080
+      - "18080:8080"
     environment:
       TYPE: webpage
       ENDPOINT: https://www.google.com
@@ -13,12 +14,11 @@ services:
 
   genie:
     container_name: genie
-    network_mode: host
     build:
       context: ../
       dockerfile: ./svc/genie/Dockerfile
     ports:
-      - 18081:8081
+      - "18081:8081"
     volumes:
       - ./minikube/config:/root/.kube/config
 
@@ -28,7 +28,7 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yaml'
     ports:
-      - 19090:9090
+      - "19090:9090"
     restart: unless-stopped
     volumes:
       - ./prometheus:/etc/prometheus
@@ -38,7 +38,7 @@ services:
     image: grafana/grafana:latest
     container_name: grafana
     ports:
-      - 13000:3000
+      - "13000:3000"
     restart: unless-stopped
     volumes:
       - ./grafana/datasource.yaml:/etc/grafana/provisioning/datasources/datasources.yaml

@@ -1,5 +1,7 @@
 # Sandbox Setup
 
+---
+
 This sandbox configuration allows you to run statuz microservices with Prometheus, and Grafana in a Dockerized environment.
 It also gives statuz microservices access to necessary kubernetes api with minikube. 
 
@@ -10,44 +12,50 @@ Before you can use this Docker Compose setup, ensure you have the following prer
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 - [Minikube](https://minikube.sigs.k8s.io/docs/start/)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/)
 
 ### Versions
 We have tested this sandbox with following tools and version, if you face any issue feel free to raise an issue. 
 
-| name           | version    |
-|----------------|------------|
-| go             | `go1.20.4` |
-| docker         | `24.0.2`   |
-| docker-compose | `v2.18.1`  |
-| minikube       | `v1.31.2`  |
-| kubernetes     | `v1.27.4`  |
+| name           | version             |
+|----------------|---------------------|
+| go             | `go1.20.6`          |
+| docker         | `24.0.6`            |
+| docker-compose | `v2.22.0-desktop.2` |
+| minikube       | `v1.31.2`           |
+| kubernetes     | `v1.27.4`           |
+| kubectl        | `v1.28.2`           |
 
 
-## How to start sandbox environment?
-As this sandbox is highly dependent on docker and minikube, please make sure docker and minikube is up and running. 
 
-1. we have a script prepared to get started. simply run this command to create/update necessary configs. 
+## How to setup sandbox environment?
+As this sandbox is highly dependent on docker and minikube, please make sure docker and minikube is up and running.
+
+We have a script prepared to get started. simply run this command to create/update necessary configs.
 ```bash
 $ bash setup.sh
 ```
-2. once everything is ready you can simply run
+
+## How to start sandbox environment?
+Once `setup.sh` updates/sets necessary configs, you can run following command to start statuz sandbox environment.
 ```bash
-$ docker-compose up 
+$ bash start.sh
 ```
-3. Access statuz, Prometheus, and Grafana in your web browser:
-   - statuz: http://localhost:18080
+- Kubernetes API, Prometheus, and Grafana will be available on:
+   - Kubernetes API: http://localhost:18001
    - Prometheus: http://localhost:19090
    - Grafana: http://localhost:13000
+- statuz microservices will be available on:
+   - watcher: http://localhost:18080
+   - genie: http://localhost:18081
 
-### Cleanup
-When you're finished using the services or need to stop them, follow these steps:
-1. Open a terminal and navigate to the directory containing the `docker-compose.yml` file.
-2. To stop and remove the running containers, use the following command:
+## How to stop sandbox environment?
+We have a bash script prepared to stop statuz sandbox environment. Simply run
 ```bash
-$ docker-compose down
+$ bash stop.sh
 ```
 
-
+---
 ## watcher configuration 
 *NB: this manual config update will be deprecated soon*
 
