@@ -47,13 +47,5 @@ services:
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
       - GF_AUTH_DISABLE_LOGIN_FORM=true
 
-#  nginx:
-#    container_name: nginx
-#    image: nginx:latest
-#    ports:
-#      - "80:80"
-#    volumes:
-#      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-
 volumes:
   prom_data:
