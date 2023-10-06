@@ -2,7 +2,6 @@ apiVersion: statuz.timam.io/v1alpha1
 kind: Statuz
 metadata:
   name: anyGivenName
-  description: anyGivenDescription
   namespace: yourNamespace                         #statuz will create resources(pod,configmap etc) in this namespace to monitor specified endpoint
 spec:
   type: http                                       #["http", "https", "ping", "port"]
