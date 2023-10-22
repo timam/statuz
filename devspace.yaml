@@ -19,10 +19,10 @@ pipelines:
 
 images:
   watcher:
-    image: statuz/watcher
+    image: quay.io/statuz/watcher
     dockerfile: ./Dockerfile
   genie:
-    image: statuz/genie
+    image: quay.io/statuz/genie
     dockerfile: ./Dockerfile
 
 deployments:
@@ -33,7 +33,7 @@ deployments:
         repo: https://charts.devspace.sh
       values:
         containers:
-          - image: statuz/watcher
+          - image: quay.io/statuz/watcher
         service:
           ports:
             - port: 8080
@@ -45,7 +45,7 @@ deployments:
         repo: https://charts.devspace.sh
       values:
         containers:
-          - image: statuz/genie
+          - image: quay.io/statuz/genie
         service:
           ports:
             - port: 8081
@@ -74,7 +74,7 @@ deployments:
 
 dev:
   watcher:
-    imageSelector: statuz/watcher
+    imageSelector: quay.io/statuz/watcher
     devImage: ghcr.io/loft-sh/devspace-containers/go:1.18-alpine
     sync:
       - path: ./
@@ -100,7 +100,7 @@ dev:
       - name: INTERVAL
         value: 15s
   genie:
-    imageSelector: statuz/genie
+    imageSelector: quay.io/statuz/genie
     devImage: ghcr.io/loft-sh/devspace-containers/go:1.18-alpine
     sync:
       - path: ./
