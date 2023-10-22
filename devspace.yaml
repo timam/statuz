@@ -1,0 +1,134 @@
+version: v2beta1
+name: statuz
+
+pipelines:
+  dev:
+    run: |-
+      run_dependencies --all       # 1. Deploy any projects this project needs (see "dependencies")
+      ensure_pull_secrets --all    # 2. Ensure pull secrets
+      create_deployments --all     # 3. Deploy Helm charts and manifests specfied as "deployments"
+      start_dev genie                # 4. Start dev mode "watcher" (see "dev" section)
+      start_dev watcher                # 4. Start dev mode "watcher" (see "dev" section)
+
+  deploy:
+    run: |-
+      run_dependencies --all                            # 1. Deploy any projects this project needs (see "dependencies")
+      ensure_pull_secrets --all                         # 2. Ensure pull secrets
+      build_images --all -t $(git describe --always)    # 3. Build, tag (git commit hash) and push all images (see "images")
+      create_deployments --all                          # 4. Deploy Helm charts and manifests specfied as "deployments"
+
+images:
+  watcher:
+    image: quay.io/statuz/watcher
+    dockerfile: ./Dockerfile
+  genie:
+    image: quay.io/statuz/genie
+    dockerfile: ./Dockerfile
+
+deployments:
+  watcher:
+    helm:
+      chart:
+        name: component-chart
+        repo: https://charts.devspace.sh
+      values:
+        containers:
+          - image: quay.io/statuz/watcher
+        service:
+          ports:
+            - port: 8080
+
+  genie:
+    helm:
+      chart:
+        name: component-chart
+        repo: https://charts.devspace.sh
+      values:
+        containers:
+          - image: quay.io/statuz/genie
+        service:
+          ports:
+            - port: 8081
+  prometheus:
+    helm:
+      chart:
+        name: prometheus
+        repo: https://prometheus-community.github.io/helm-charts
+  grafana:
+    helm:
+      chart:
+        name: grafana
+        repo: https://grafana.github.io/helm-charts
+      values:
+        grafana.ini:
+          auth.anonymous:
+            enabled: true
+            org_role: Admin
+        datasources:
+          datasources.yaml:
+            apiVersion: 1
+            datasources:
+            - name: Prometheus
+              type: prometheus
+              url: http://prometheus-server:80
+
+dev:
+  watcher:
+    imageSelector: quay.io/statuz/watcher
+    devImage: ghcr.io/loft-sh/devspace-containers/go:1.18-alpine
+    sync:
+      - path: ./
+    terminal:
+      command: ./devspace_start.sh
+    ssh:
+      enabled: true
+    proxyCommands:
+      - command: devspace
+      - command: kubectl
+      - command: helm
+      - gitCredentials: true
+    ports:
+      - port: "2345"
+      - port: "8080"
+    open:
+      - url: http://localhost:8080
+    env:
+      - name: TYPE
+        value: webpage
+      - name: ENDPOINT
+        value: https://www.google.com
+      - name: INTERVAL
+        value: 15s
+  genie:
+    imageSelector: quay.io/statuz/genie
+    devImage: ghcr.io/loft-sh/devspace-containers/go:1.18-alpine
+    sync:
+      - path: ./
+    terminal:
+      command: ./devspace_start.sh
+    ssh:
+      enabled: true
+    proxyCommands:
+      - command: devspace
+      - command: kubectl
+      - command: helm
+      - gitCredentials: true
+    ports:
+      - port: "2345"
+      - port: "8081"
+    open:
+      - url: http://localhost:8081
+
+commands:
+  migrate-db:
+    command: |-
+      echo 'This is a cross-platform, shared command that can be used to codify any kind of dev task.'
+      echo 'Anyone using this project can invoke it via "devspace run migrate-db"'
+
+# Define dependencies to other projects with a devspace.yaml
+# dependencies:
+#   api:
+#     git: https://...  # Git-based dependencies
+#     tag: v1.0.0
+#   ui:
+#     path: ./ui        # Path-based dependencies (for monorepos)
