@@ -42,6 +42,14 @@ deployments:
       values:
         containers:
           - image: quay.io/statuz/watcher
+            env:
+              # TODO: remove dependency on env variables
+              - name: TYPE
+                value: webpage
+              - name: ENDPOINT
+                value: https://www.google.com
+              - name: INTERVAL
+                value: 15s
         service:
           ports:
             - port: 8080
