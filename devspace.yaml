@@ -59,6 +59,11 @@ deployments:
       chart:
         name: grafana
         repo: https://grafana.github.io/helm-charts
+      values:
+        grafana.ini:
+          auth.anonymous:
+            enabled: true
+            org_role: Admin
 
 dev:
   watcher:
