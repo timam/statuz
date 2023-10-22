@@ -64,6 +64,18 @@ deployments:
         service:
           ports:
             - port: 8081
+  prometheus:
+    helm:
+      chart:
+        name: prometheus
+        repo: https://prometheus-community.github.io/helm-charts
+  grafana:
+    helm:
+      chart:
+        name: grafana
+        repo: https://grafana.github.io/helm-charts
+
+
 
 # This is a list of `dev` containers that are based on the containers created by your deployments
 dev:

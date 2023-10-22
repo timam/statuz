@@ -22,7 +22,9 @@ Welcome to your development container!
 This is how you can work with it:
 - Files will be synchronized between your local machine and this container
 - Some ports will be forwarded, so you can access this container via localhost
-- Run \`${COLOR_GREEN}go run main.go${COLOR_RESET}\` to start the application
+- Run \`${COLOR_GREEN}go run svc/genie/main.go${COLOR_RESET}\` to start the genie
+- Run \`${COLOR_GREEN}minikube service prometheus-server -n statuz${COLOR_RESET}\` to open prometheus
+- Run \`${COLOR_GREEN}minikube service grafana -n statuz${COLOR_RESET}\` to open grafana
 "
 
 # Set terminal prompt
