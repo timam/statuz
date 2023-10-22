@@ -21,7 +21,7 @@ images:
   watcher:
     image: quay.io/statuz/watcher
     tags:
-      - dev-latest
+      - latest
     custom:
       command: |-
         docker build -t ${runtime.images.watcher.image}:${runtime.images.watcher.tag} . -f svc/watcher/Dockerfile
@@ -29,7 +29,7 @@ images:
   genie:
     image: quay.io/statuz/genie
     tags:
-      - dev-latest
+      - latest
     custom:
       command: |-
         docker build -t ${runtime.images.genie.image}:${runtime.images.genie.tag} . -f svc/genie/Dockerfile
