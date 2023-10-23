@@ -20,16 +20,12 @@ pipelines:
 images:
   watcher:
     image: watcher
-    tags:
-      - ${runtime.images.watcher.tag}
     custom:
       command: |-
         docker build -t ${runtime.images.watcher.image}:${runtime.images.watcher.tag} . -f svc/watcher/Dockerfile
 
   genie:
     image: genie
-    tags:
-      - ${runtime.images.genie.tag}
     custom:
       command: |-
         docker build -t ${runtime.images.genie.image}:${runtime.images.genie.tag} . -f svc/genie/Dockerfile
