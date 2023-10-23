@@ -11,6 +11,4 @@ COPY ./svc/watcher /statuz/svc/watcher
 
 RUN go build -o /statuz/bin/watcher -ldflags '-w -s' -tags netgo -a -installsuffix cgo -v ./svc/watcher
 
-FROM alpine:edge
-COPY --from=build /statuz/bin/watcher /statuz/bin/watcher
 ENTRYPOINT ["/statuz/bin/watcher"]
