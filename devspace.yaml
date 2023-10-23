@@ -37,7 +37,7 @@ deployments:
         repo: https://charts.devspace.sh
       values:
         containers:
-          - image: quay.io/statuz/watcher
+          - image: quay.io/statuz/watcher:main
             env:
               # TODO: remove dependency on env variables
               - name: TYPE
@@ -57,7 +57,7 @@ deployments:
         repo: https://charts.devspace.sh
       values:
         containers:
-          - image: quay.io/statuz/genie
+          - image: quay.io/statuz/genie:main
         service:
           ports:
             - port: 8081
